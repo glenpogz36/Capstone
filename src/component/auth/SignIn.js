@@ -9,7 +9,7 @@ import {
     Button,
     Header,
     Message,
-
+    Icon
 } from "semantic-ui-react";
 
 export class SignIn extends Component {
@@ -66,7 +66,8 @@ export class SignIn extends Component {
         return (
             <Grid textAlign="center" verticalAlign="middle" className="SignIn">
                 <Grid.Column style={{ maxWidth: 450 }}>
-                    <Header textAlign="center">
+                    <Header as="h1" icon color="violet" textAlign="center">
+                        <Icon name="code branch" color="violet" />
                         Login to Capstone Project Portal
           </Header>
                     <Form size="large" onSubmit={this.handleSubmit}>
