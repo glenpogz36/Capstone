@@ -1,16 +1,15 @@
 
 import React, { Component } from 'react';
 import { BrowserRouter, Switch, Route, withRouter } from 'react-router-dom'
-import Navbar from './layout/Navbar'
 import Dashboard from './dashboard/Dashboard'
 import ProjectDetails from './project/ProjectDetails'
 import SignIn from './auth/SignIn'
 import SignUp from './auth/SignUp'
 import CreateProject from './project/CreatePoject'
 import { connect } from "react-redux";
-import { setUser, clearUser } from "../actions";
-import "../css/app.css";
-import Layout from "../components/Layout";
+import { setUser, clearUser } from "../store/actions";
+import "App.css";
+import Layout from "../component/Panels/LayOut";
 import { Spinner } from "../helpers/spinner";
 import firebase from "../config/firebaseConfig";
 
@@ -33,7 +32,6 @@ class App extends Component {
     ) : (
         <BrowserRouter>
           <div className="App">
-            <Navbar />
             <Switch>
               <Route exact path='/' component={Dashboard} />
               <Route exact path="/message" component={Layout} />
