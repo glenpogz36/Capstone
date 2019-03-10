@@ -12,6 +12,7 @@ import { setUser, clearUser } from "../actions";
 import "../css/app.css";
 import Layout from "../components/Layout";
 import { Spinner } from "../helpers/spinner";
+import firebase from "../config/firebaseConfig";
 
 class App extends Component {
   componentDidMount() {
