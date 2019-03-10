@@ -1,60 +1,123 @@
-import React, { Component } from 'react'
-import { connect } from 'react-redux'
-import { signIn } from '../../store/actions/authActions'
-import { Redirect } from 'react-router-dom'
+import React, { Component } from "react";
+import { Link } from "react-router-dom";
+import firebase from "../../config/firebaseConfig";
 
-class SignIn extends Component {
+import {
+    Grid,
+    Form,
+    Segment,
+    Button,
+    Header,
+    Message,
+
+} from "semantic-ui-react";
+
+export class SignIn extends Component {
     state = {
-        email: '',
-        password: ''
-    }
-    handleChange = (e) => {
-        this.setState({
-            [e.target.id]: e.target.value
-        })
-    }
-    handleSubmit = (e) => {
+        currentUser: "",
+        email: "",
+        password: "",
+        errors: [],
+        loading: false
+    };
+
+    handleChange = e => {
+        this.setState({ [e.target.name]: e.target.value });
+    };
+
+    displayErrors = errors =>
+        errors.map((error, i) => <p key={i}>{error.message}</p>);
+
+    handleSubmit = e => {
         e.preventDefault();
-        this.props.signIn(this.state)
-    }
+        if (this.isFormValid(this.state)) {
+            this.setState({ errors: [], loading: true });
+            const { email, password, errors } = this.state;
+            firebase
+                .auth()
+                .signInWithEmailAndPassword(email, password)
+                .then(signedInUser => {
+                    console.log("Login: signedInUser ", signedInUser);
+                    this.setState({
+                        currentUser: signedInUser,
+                        loading: false
+                    });
+                })
+                .catch(err => {
+                    console.log(err);
+                    this.setState({
+                        errors: errors.concat(err),
+                        loading: false
+                    });
+                });
+        }
+    };
+
+    isFormValid = ({ email, password }) => email && password;
+
+    handleInputError = (errors, inputName) => {
+        return errors.some(error => error.message.toLowerCase().includes(inputName))
+            ? "error"
+            : "";
+    };
+
     render() {
-        const { authError, auth } = this.props;
-        if (auth.uid) return <Redirect to='/' />
+        const { email, password, errors, loading } = this.state;
         return (
-            <div className="container">
-                <form className="white" onSubmit={this.handleSubmit}>
-                    <h5 className="grey-text text-darken-3">Sign In</h5>
-                    <div className="input-field">
-                        <label htmlFor="email">Email</label>
-                        <input type="email" id='email' onChange={this.handleChange} />
-                    </div>
-                    <div className="input-field">
-                        <label htmlFor="password">Password</label>
-                        <input type="password" id='password' onChange={this.handleChange} />
-                    </div>
-                    <div className="input-field">
-                        <button className="btn pink lighten-1 z-depth-0">Login</button>
-                        <div className="center red-text">
-                            {authError ? <p>{authError}</p> : null}
-                        </div>
-                    </div>
-                </form>
-            </div>
-        )
+            <Grid textAlign="center" verticalAlign="middle" className="SignIn">
+                <Grid.Column style={{ maxWidth: 450 }}>
+                    <Header textAlign="center">
+                        Login to Capstone Project Portal
+          </Header>
+                    <Form size="large" onSubmit={this.handleSubmit}>
+                        <Segment stacked>
+                            <Form.Input
+                                className={this.handleInputError(errors, "email")}
+                                fluid
+                                name="email"
+                                icon="mail"
+                                iconPosition="left"
+                                placeholder="Email Address"
+                                onChange={this.handleChange}
+                                value={email}
+                                type="email"
+                            />
+                            <Form.Input
+                                className={this.handleInputError(errors, "password")}
+                                fluid
+                                name="password"
+                                icon="lock"
+                                iconPosition="left"
+                                placeholder="Password"
+                                onChange={this.handleChange}
+                                value={password}
+                                type="password"
+                            />
+
+                            <Button
+                                disabled={loading}
+                                className={loading ? "loading" : ""}
+                                color="violet"
+                                fluid
+                                size="large"
+                            >
+                                Submit
+              </Button>
+                        </Segment>
+                    </Form>
+                    {errors.length > 0 && (
+                        <Message error>
+                            <h3>Error</h3>
+                            {this.displayErrors(errors)}
+                        </Message>
+                    )}
+                    <Message>
+                        Don't have an account? <Link to="/register">Register</Link>
+                    </Message>
+                </Grid.Column>
+            </Grid>
+        );
     }
 }
 
-const mapStateToProps = (state) => {
-    return {
-        authError: state.auth.authError,
-        auth: state.firebase.auth
-    }
-}
-
-const mapDispatchToProps = (dispatch) => {
-    return {
-        signIn: (creds) => dispatch(signIn(creds))
-    }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(SignIn)
+export default SignIn
