@@ -4,12 +4,12 @@ import 'firebase/database';
 import 'firebase/storage';
 
 var config = {
-	apiKey: "AIzaSyCJPgDPvXqmzz8iTQznshHUgTPRlwufJdo",
-	authDomain: "capstone-portal.firebaseapp.com",
-	databaseURL: "https://capstone-portal.firebaseio.com",
-	projectId: "capstone-portal",
-	storageBucket: "capstone-portal.appspot.com",
-	messagingSenderId: "532532476448"
+	apiKey: "AIzaSyC2tA8cRFDqcp87SdKyMZFOusV__ywaGbM",
+	authDomain: "capstone-myprojs.firebaseapp.com",
+	databaseURL: "https://capstone-myprojs.firebaseio.com",
+	projectId: "capstone-myprojs",
+	storageBucket: "capstone-myprojs.appspot.com",
+	messagingSenderId: "459301928182"
 };
 firebase.initializeApp(config);
 
