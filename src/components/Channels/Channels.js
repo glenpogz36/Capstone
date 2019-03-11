@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import firebase from "../Config/firebase";
+import firebase from "../../Config/firebase";
 import { connect } from "react-redux";
 import { setCurrentChannel, setPrivateChannel } from "../../Store/Actions";
 import {

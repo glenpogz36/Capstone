@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import firebase from "../Config/firebase";
+import firebase from "../../Config/firebase";
 import uuidv4 from "uuid/v4";
 import { Segment, Button, Ref, Form, TextArea } from "semantic-ui-react";
 import "emoji-mart/css/emoji-mart.css";

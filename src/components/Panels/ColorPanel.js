@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { setColors } from "../../Store/Actions";
-import firebase from "../Config/firebase";
+import firebase from "../../Config/firebase";
 import {
   Sidebar,
   Menu,

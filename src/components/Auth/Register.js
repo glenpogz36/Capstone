@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import firebase from "../Config/firebase";
+import firebase from "../../Config/firebase";
 import md5 from "md5";
 import {
   Grid,
@@ -94,7 +94,7 @@ class Register extends Component {
               this.saveUser(createdUser).then(() => {
                 console.log("user saved");
               });
-              //this.setState({ loading: false });
+
             })
             .catch(err => {
               console.log(err);
