@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import firebase from "../Config/firebase";
-import MD5 from "MD5";
+import md5 from "md5";
 import {
   Grid,
   Form,
@@ -86,7 +86,7 @@ class Register extends Component {
           createdUser.user
             .updateProfile({
               displayName: this.state.username,
-              photoURL: `http://gravatar.com/avatar/${MD5(
+              photoURL: `http://gravatar.com/avatar/${md5(
                 createdUser.user.email
               )}?d=identicon`
             })

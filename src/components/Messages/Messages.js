@@ -2,7 +2,7 @@ import React, { Component, Fragment } from "react";
 import { connect } from "react-redux";
 import firebase from "../Config/firebase";
 import { Segment, Comment } from "semantic-ui-react";
-import { setUserPosts } from "../../actions";
+import { setUserPosts } from "../../Store/Actions";
 
 import MessagesHeader from "./MessagesHeader";
 import MessageForm from "./MessageForm";
