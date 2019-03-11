@@ -1,13 +1,12 @@
 import React from "react";
 import { Grid } from "semantic-ui-react";
 import "./App.css";
-
-import { connect } from "react-redux";
-
+import { connect } from "react-redux"; 
 import ColorPanel from "./Panels/ColorPanel";
 import SidePanel from "./Panels/SidePanel";
 import Messages from "./Messages/Messages";
 import MetaPanel from "./Panels/MetaPanel";
+
 
 const App = ({
   currentUser,

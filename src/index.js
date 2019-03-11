@@ -18,6 +18,7 @@ import { Provider, connect } from "react-redux";
 import { composeWithDevTools } from "redux-devtools-extension";
 import rootReducer from "./Store/Reducers";
 import { setUser, clearUser } from "./Store/Actions";
+import Navbar from './DashBoard/Navbar';
 const store = createStore(rootReducer, composeWithDevTools());
 
 class Root extends Component {
@@ -36,12 +37,13 @@ class Root extends Component {
     return this.props.isLoading ? (
       <Spinner />
     ) : (
-      <Switch>
-        <Route exact path="/" component={App} />
-        <Route path="/login" component={Login} />
-        <Route path="/register" component={Register} />
-      </Switch>
-    );
+        <Switch>
+          <Navbar />
+          <Route exact path="/" component={App} />
+          <Route path="/login" component={Login} />
+          <Route path="/register" component={Register} />
+        </Switch>
+      );
   }
 }
 
