@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import { Menu } from "semantic-ui-react";
 import UserPanel from "./UserPanel";
-import Channels from "../SidePanel/Channels";
-import DirectMessages from "../SidePanel/DirectMessages";
-import Starred from "../SidePanel/Starred";
+import Channels from "../Channels/Channels";
+import DirectMessages from "../Channels/DirectMessages";
+import Starred from "../Channels/Starred";
 
 export default class SidePanel extends Component {
   render() {

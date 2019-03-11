@@ -8,7 +8,7 @@ import {
   Button,
   Header,
   Message,
-  Icon
+
 } from "semantic-ui-react";
 import { Link } from "react-router-dom";
 
@@ -139,9 +139,9 @@ class Register extends Component {
     return (
       <Grid textAlign="center" verticalAlign="middle" className="app">
         <Grid.Column style={{ maxWidth: 450 }}>
-          <Header as="h1" icon color="violet" textAlign="center">
-            <Icon name="puzzle piece" color="violet" />
-            Register for Capstone Project Portal
+          <Header textAlign="center">
+
+            <h1>Register for Capstone Project Portal</h1>
           </Header>
           <Form onSubmit={this.handleSubmit} size="large">
             <Segment stacked>
@@ -192,7 +192,7 @@ class Register extends Component {
               <Button
                 disabled={loading}
                 className={loading ? "loading" : ""}
-                color="violet"
+                color="green"
                 fluid
                 size="large"
               >

@@ -7,7 +7,6 @@ import {
   Button,
   Header,
   Message,
-  Icon
 } from "semantic-ui-react";
 import { Link } from "react-router-dom";
 
@@ -64,9 +63,9 @@ class Login extends Component {
     return (
       <Grid textAlign="center" verticalAlign="middle" className="app">
         <Grid.Column style={{ maxWidth: 450 }}>
-          <Header as="h1" icon color="violet" textAlign="center">
-            <Icon name="code branch" color="violet" />
-            Login to Capstone Project Portal
+          <Header  textAlign="center">
+            
+           <h1>Login to Capstone Project Portal</h1> 
           </Header>
           <Form onSubmit={this.handleSubmit} size="large">
             <Segment stacked>
@@ -96,7 +95,7 @@ class Login extends Component {
               <Button
                 disabled={loading}
                 className={loading ? "loading" : ""}
-                color="violet"
+                color="blue"
                 fluid
                 size="large"
               >

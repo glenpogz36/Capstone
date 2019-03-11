@@ -8,7 +8,7 @@ import MessagesHeader from "./MessagesHeader";
 import MessageForm from "./MessageForm";
 import Message from "./Message";
 import Typing from "./Typing";
-import Skeleton from "./Skeleton";
+import User from "./User";
 
 class Messages extends Component {
   state = {
@@ -282,12 +282,12 @@ class Messages extends Component {
       </div>
     ));
 
-  displayMessageSkeleton = loading => {
+  displayMessageUser = loading => {
     if (loading) {
       return (
         <React.Fragment>
           {[...Array(10)].map((_, i) => (
-            <Skeleton key={i} />
+            <User key={i} />
           ))}
         </React.Fragment>
       );
@@ -324,7 +324,7 @@ class Messages extends Component {
         />
         <Segment>
           <Comment.Group className={"messages"}>
-            {this.displayMessageSkeleton(messagesLoading)}
+            {this.displayMessageUser(messagesLoading)}
             {searchTerm
               ? this.displayMessages(searchResults)
               : this.displayMessages(messages)}
