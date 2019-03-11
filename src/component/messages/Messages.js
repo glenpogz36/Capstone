@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Segment, Comment } from "semantic-ui-react";
-import MessagesHeader from "./MessagesHeader";
+import MessagesHeader from "./MessageHeader";
 import MessageForm from "./MessageForm";
 import firebase from "../../config/firebaseConfig";
 import { Message } from "./Message";

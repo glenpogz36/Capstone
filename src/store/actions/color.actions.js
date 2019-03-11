@@ -1,8 +1,8 @@
-import { colorsConstatns } from "../constants";
+import { colorConstant } from "../constant/color.constants";
 
 export const setColors = (primaryColor, secondaryColor) => dispatch => {
   dispatch({
-    type: colorsConstatns.SET_COLORS,
+    type: colorConstant.SET_COLORS,
     payload: {
       primaryColor,
       secondaryColor

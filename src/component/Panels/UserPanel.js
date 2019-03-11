@@ -1,6 +1,7 @@
 import React, { Component } from "react";
-import AvatarEditor from "react-avatar-editor";
+import AvatarEditor from 'react-avatar-editor'
 import { ImageSpinner } from "../../helpers/spinner";
+import firebase from '../../config/firebaseConfig'
 
 //prettier-ignore
 import {
@@ -13,7 +14,7 @@ import {
     Input,
     Button
 } from "semantic-ui-react";
-import firebase from "../../helpers/firebase";
+
 
 class UserPanel extends Component {
     state = {

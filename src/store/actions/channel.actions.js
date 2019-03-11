@@ -1,4 +1,4 @@
-import { channelConstant } from "../constants";
+import { channelConstant } from "../constant";
 
 export const setCurrentChannel = channel => dispatch => {
     dispatch({

@@ -1,8 +1,9 @@
 import React, { Component } from "react";
 import firebase from "../../config/firebaseConfig";
-import { setColors } from "../../actions";
+import { setColors } from "../../store/actions";
 import { connect } from "react-redux";
 import { Popup } from "semantic-ui-react";
+import { CompactPicker } from "react-color";
 import {
     Sidebar,
     Divider,
@@ -13,7 +14,7 @@ import {
     Label,
     Segment
 } from "semantic-ui-react";
-import { CompactPicker } from "react-color";
+
 
 class ColorPanel extends Component {
     state = {

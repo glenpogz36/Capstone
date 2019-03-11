@@ -9,7 +9,7 @@ import {
     Button,
     Header,
     Message,
-    Icon
+
 } from "semantic-ui-react";
 
 export class SignIn extends Component {
@@ -66,10 +66,9 @@ export class SignIn extends Component {
         return (
             <Grid textAlign="center" verticalAlign="middle" className="SignIn">
                 <Grid.Column style={{ maxWidth: 450 }}>
-                    <Header as="h1" icon color="violet" textAlign="center">
-                        <Icon name="code branch" color="violet" />
-                        Login to Capstone Project Portal
-          </Header>
+                    <Header textAlign="center">
+                        <h1>Login to Capstone Project Portal</h1>
+                    </Header>
                     <Form size="large" onSubmit={this.handleSubmit}>
                         <Segment stacked>
                             <Form.Input
@@ -98,7 +97,7 @@ export class SignIn extends Component {
                             <Button
                                 disabled={loading}
                                 className={loading ? "loading" : ""}
-                                color="violet"
+                                color="blue"
                                 fluid
                                 size="large"
                             >
@@ -113,7 +112,7 @@ export class SignIn extends Component {
                         </Message>
                     )}
                     <Message>
-                        Don't have an account? <Link to="/register">Register</Link>
+                        Don't have an account? <Link to="/signup">Register</Link>
                     </Message>
                 </Grid.Column>
             </Grid>

@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import firebase from "../../config/firebaseConfig"
 import MD5 from "MD5";
 import {
-    Grid,
+  Grid,
   Form,
   Segment,
   Button,
@@ -12,7 +12,7 @@ import {
   Icon
 } from "semantic-ui-react";
 
-export default class Register extends Component {
+export default class SignUp extends Component {
   state = {
     username: "",
     email: "",
@@ -84,7 +84,7 @@ export default class Register extends Component {
           createdUser.user
             .updateProfile({
               displayName: username,
-              photoURL: `https://gravatar.com/avatar/${md5(
+              photoURL: `https://gravatar.com/avatar/${MD5(
                 createdUser.user.email
               )}?=identicon`
             })
@@ -140,7 +140,7 @@ export default class Register extends Component {
         <Grid.Column style={{ maxWidth: 450 }}>
           <Header as="h1" icon color="orange" textAlign="center">
             <Icon name="users" color="orange" />
-            Register for Capstone Project Portal
+            Register for DevChat
           </Header>
           <Form size="large" onSubmit={this.handleSubmit}>
             <Segment stacked>
@@ -213,5 +213,3 @@ export default class Register extends Component {
     );
   }
 }
-
-export default SignUp

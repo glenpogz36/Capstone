@@ -1,4 +1,4 @@
-import { authConstant } from "../constants";
+import { authConstant } from "../constant";
 
 export const setUser = user => dispatch => {
   dispatch({
