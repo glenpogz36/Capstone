@@ -5,13 +5,13 @@ import { Modal, Input, Button, Icon } from "semantic-ui-react";
 export default class FileModal extends Component {
   state = {
     file: null,
-    authorized: ["image/jpeg", "image/png", "image/jpeg", "image/gif"]
+    authorized: ["image/jpeg", "image/png"]
   };
 
-  addFile = event => {
-    const file = event.target.files[0];
+  addFile = e => {
+    const file = e.target.files[0];
     if (file) {
-      this.setState({ file });
+      this.setState({ file: file });
     }
   };
 
@@ -20,30 +20,29 @@ export default class FileModal extends Component {
     const { uploadFile, closeModal } = this.props;
     if (file !== null) {
       if (this.isAuthorized(file.name)) {
-        // sned file
-        const metaData = { contentType: mime.lookup(file.name) };
-        uploadFile(file, metaData);
+        const metadata = { contentType: mime.lookup(file.name) };
+        uploadFile(file, metadata);
         closeModal();
-        this.clearfile();
+        this.clearFile();
       }
     }
   };
 
-  isAuthorized = fileName =>
-    this.state.authorized.includes(mime.lookup(fileName));
+  clearFile = () => this.setState({ file: null });
 
-  clearfile = () => this.setState({ file: null });
+  isAuthorized = filename =>
+    this.state.authorized.includes(mime.lookup(filename));
 
   render() {
     const { modal, closeModal } = this.props;
     return (
       <Modal basic open={modal} onClose={closeModal}>
-        <Modal.Header>Select an Image File</Modal.Header>
+        <Modal.Header> Select an Image File</Modal.Header>
         <Modal.Content>
           <Input
             onChange={this.addFile}
             fluid
-            label="File types: jpg, png, jpeg, gif"
+            label="File types: jpg, png"
             name="file"
             type="file"
           />

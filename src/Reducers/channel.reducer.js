@@ -1,4 +1,4 @@
-import { channelConstant } from "../constants";
+import { channelConstant } from "../Constants";
 
 const initialState = {
   currentChannel: null,

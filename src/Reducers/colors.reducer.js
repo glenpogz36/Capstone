@@ -1,4 +1,4 @@
-import { colorsConstatns } from "../constants";
+import { colorsConstatns } from "../Constants";
 
 const initialState = {
   primaryColor: "#4c3c4c",

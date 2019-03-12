@@ -1,5 +1,7 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 import firebase from "../../Config/firebase";
+
 import {
   Grid,
   Form,
@@ -8,42 +10,42 @@ import {
   Header,
   Message,
 } from "semantic-ui-react";
-import { Link } from "react-router-dom";
 
-class Login extends Component {
+export default class Login extends Component {
   state = {
+    currentUser: "",
     email: "",
     password: "",
     errors: [],
     loading: false
   };
 
-  // display errors messages
+  handleChange = e => {
+    this.setState({ [e.target.name]: e.target.value });
+  };
+
   displayErrors = errors =>
     errors.map((error, i) => <p key={i}>{error.message}</p>);
 
-  // handle inputs change event
-  handleChange = event => {
-    this.setState({
-      [event.target.name]: event.target.value
-    });
-  };
-
-  // handle form submit event
-  handleSubmit = event => {
-    event.preventDefault();
+  handleSubmit = e => {
+    e.preventDefault();
     if (this.isFormValid(this.state)) {
       this.setState({ errors: [], loading: true });
+      const { email, password, errors } = this.state;
       firebase
         .auth()
-        .signInWithEmailAndPassword(this.state.email, this.state.password)
+        .signInWithEmailAndPassword(email, password)
         .then(signedInUser => {
-          console.log(signedInUser);
+          console.log("Login: signedInUser ", signedInUser);
+          this.setState({
+            currentUser: signedInUser,
+            loading: false
+          });
         })
         .catch(err => {
-          console.error(err);
+          console.log(err);
           this.setState({
-            errors: this.state.errors.concat(err),
+            errors: errors.concat(err),
             loading: false
           });
         });
@@ -63,39 +65,39 @@ class Login extends Component {
     return (
       <Grid textAlign="center" verticalAlign="middle" className="app">
         <Grid.Column style={{ maxWidth: 450 }}>
-          <Header  textAlign="center">
-            
-           <h1>Login to Capstone Project Portal</h1> 
+          <Header as="h1" color="blue" textAlign="center">
+
+            Login to Myproj Portal
           </Header>
-          <Form onSubmit={this.handleSubmit} size="large">
+          <Form size="large" onSubmit={this.handleSubmit}>
             <Segment stacked>
               <Form.Input
+                className={this.handleInputError(errors, "email")}
                 fluid
-                type="email"
                 name="email"
                 icon="mail"
                 iconPosition="left"
-                placeholder="Email"
-                value={email}
+                placeholder="Email Address"
                 onChange={this.handleChange}
-                className={this.handleInputError(errors, "email")}
+                value={email}
+                type="email"
               />
               <Form.Input
+                className={this.handleInputError(errors, "password")}
                 fluid
-                type="password"
                 name="password"
                 icon="lock"
                 iconPosition="left"
                 placeholder="Password"
-                value={password}
                 onChange={this.handleChange}
-                className={this.handleInputError(errors, "password")}
+                value={password}
+                type="password"
               />
 
               <Button
                 disabled={loading}
                 className={loading ? "loading" : ""}
-                color="blue"
+                color="orange"
                 fluid
                 size="large"
               >
@@ -109,7 +111,6 @@ class Login extends Component {
               {this.displayErrors(errors)}
             </Message>
           )}
-
           <Message>
             Don't have an account? <Link to="/register">Register</Link>
           </Message>
@@ -118,5 +119,3 @@ class Login extends Component {
     );
   }
 }
-
-export default Login;

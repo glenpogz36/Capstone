@@ -1,4 +1,4 @@
-import { authConstant } from "../constants";
+import { authConstant } from "../Constants";
 
 const initialState = {
   currentUser: null,

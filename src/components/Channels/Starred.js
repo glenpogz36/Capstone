@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import firebase from "../../Config/firebase";
 import { connect } from "react-redux";
-import { setCurrentChannel, setPrivateChannel } from "../../Store/Actions";
+import { setCurrentChannel, setPrivateChannel } from "../../Actions";
 import { Menu, Icon } from "semantic-ui-react";
 
 class Starred extends Component {
@@ -12,26 +12,29 @@ class Starred extends Component {
     starredChannels: []
   };
 
-  componentDidMount() {
+  componentWillMount() {
     if (this.state.user) {
       this.addListeners(this.state.user.uid);
     }
   }
 
-  componentWillUnmount() {
-    this.removeListeners();
+  componentWillUnmount(){
+    this.removeListener()
   }
 
-  removeListeners = () => {
-    this.state.usersRef.child(`${this.state.user.uid}/starred`).off();
-  };
+  removeListener = () => {
+    this.state.usersRef.child(`${this.state.user.uid}/starred`).off()
+  }
 
   addListeners = userId => {
     this.state.usersRef
       .child(userId)
       .child("starred")
       .on("child_added", snap => {
-        const starredChannel = { id: snap.key, ...snap.val() };
+        const starredChannel = {
+          id: snap.key,
+          ...snap.val()
+        };
         this.setState({
           starredChannels: [...this.state.starredChannels, starredChannel]
         });
@@ -42,15 +45,26 @@ class Starred extends Component {
       .child("starred")
       .on("child_removed", snap => {
         const channelToRemove = { id: snap.key, ...snap.val() };
-
         const filteredChannels = this.state.starredChannels.filter(channel => {
           return channel.id !== channelToRemove.id;
         });
-        this.setState({
-          starredChannels: filteredChannels
-        });
+        this.setState({ starredChannels: filteredChannels });
       });
   };
+
+  displayChannels = starredChannels =>
+    starredChannels.length > 0 &&
+    starredChannels.map(channel => (
+      <Menu.Item
+        key={channel.id}
+        onClick={() => this.changeChannel(channel)}
+        name={channel.name}
+        style={{ opacity: 0.7, color: "#eee" }}
+        active={channel.id === this.state.activeChannel}
+      >
+        # {channel.name}
+      </Menu.Item>
+    ));
 
   changeChannel = channel => {
     this.setActiveChannel(channel);
@@ -62,36 +76,20 @@ class Starred extends Component {
     this.setState({ activeChannel: channel.id });
   };
 
-  displayChannels = starredChannels =>
-    starredChannels.length > 0 &&
-    starredChannels.map(channel => (
-      <Menu.Item
-        key={channel.id}
-        onClick={() => this.changeChannel(channel)}
-        name={channel.name}
-        style={{ opacity: 0.7 }}
-        active={channel.id === this.state.activeChannel}
-      >
-        # {channel.name}
-      </Menu.Item>
-    ));
-
   render() {
     const { starredChannels } = this.state;
     return (
-      <Menu.Menu>
+      <div>
         <Menu.Menu className="menu">
-          <Menu.Item>
+          <Menu.Item style={{ color: "#eee" }}>
             <span>
               <Icon name="star" /> STARRED
             </span>{" "}
             ({starredChannels.length}){" "}
-            <Icon name="add" onClick={this.openModal} />
           </Menu.Item>
-
           {this.displayChannels(starredChannels)}
         </Menu.Menu>
-      </Menu.Menu>
+      </div>
     );
   }
 }

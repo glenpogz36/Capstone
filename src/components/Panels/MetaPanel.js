@@ -10,35 +10,35 @@ import {
 
 export default class MetaPanel extends Component {
   state = {
-    channel: this.props.currentChannel,
+    activeIndex: 0,
     privateChannel: this.props.isPrivateChannel,
-    activeIndex: 0
+    channel: this.props.currentChannel
   };
 
-  setActiveIndex = (event, titleProps) => {
+  setActiveIndex = (e, titleProps) => {
     const { index } = titleProps;
     const { activeIndex } = this.state;
     const newIndex = activeIndex === index ? -1 : index;
     this.setState({ activeIndex: newIndex });
   };
 
-  formatCount = count =>
-    count > 1 || count === 0 ? `${count} posts` : `${count} post`;
+  formatCount = num => (num > 1 || num === 0 ? `${num} posts` : `${num} post`);
 
-  displayTopPosters = posters =>
-    Object.entries(posters)
+  displayTopPosters = posts =>
+    Object.entries(posts)
       .sort((a, b) => b[1] - a[1])
-      .map(([key, val], i) => {
-        return (
-          <List.Item key={i}>
-            <Image avatar src={val.avatar} />
-            <List.Content>
-              <List.Header as="a">{key}</List.Header>
-              <List.Description>{this.formatCount(val.count)}</List.Description>
-            </List.Content>
-          </List.Item>
-        );
-      })
+      .map(([key, val], i) => (
+        <List.Item key={i}>
+          <Image avatar src={val.avatar} />
+
+          <List.Content>
+            <List.Header as="a">{key}</List.Header>
+            <List.Description as="a">
+              {this.formatCount(val.count)}
+            </List.Description>
+          </List.Content>
+        </List.Item>
+      ))
       .slice(0, 5);
 
   render() {
@@ -52,15 +52,14 @@ export default class MetaPanel extends Component {
         <Header as="h3" attached="top">
           About # {channel && channel.name}
         </Header>
-
-        <Accordion styled attached="true">
+        <Accordion styled attached="top">
           <Accordion.Title
             active={activeIndex === 0}
             index={0}
             onClick={this.setActiveIndex}
           >
             <Icon name="dropdown" />
-            <Icon name="user circle" />
+            <Icon name="info" />
             Channel Details
           </Accordion.Title>
           <Accordion.Content active={activeIndex === 0}>
@@ -73,7 +72,7 @@ export default class MetaPanel extends Component {
             onClick={this.setActiveIndex}
           >
             <Icon name="dropdown" />
-            <Icon name="info" />
+            <Icon name="user circle" />
             Top Posters
           </Accordion.Title>
           <Accordion.Content active={activeIndex === 1}>
@@ -100,3 +99,5 @@ export default class MetaPanel extends Component {
     );
   }
 }
+
+// export default MetaPanel

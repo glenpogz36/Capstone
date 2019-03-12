@@ -2,10 +2,10 @@ import React, { Component } from "react";
 import { Menu } from "semantic-ui-react";
 import UserPanel from "./UserPanel";
 import Channels from "../Channels/Channels";
-import DirectMessages from "../Channels/DirectMessages";
 import Starred from "../Channels/Starred";
+import DirectMessages from "../Channels/DirectMessages";
 
-export default class SidePanel extends Component {
+export default class SlidePanel extends Component {
   render() {
     const { currentUser, primaryColor } = this.props;
     return (
@@ -14,7 +14,7 @@ export default class SidePanel extends Component {
         inverted
         fixed="left"
         vertical
-        style={{ backgroundColor: primaryColor, fontSize: "1.2rem" }}
+        style={{ background: primaryColor, fontsize: "1.2rem" }}
       >
         <UserPanel primaryColor={primaryColor} currentUser={currentUser} />
         <Starred currentUser={currentUser} />
