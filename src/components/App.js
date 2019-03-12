@@ -1,7 +1,7 @@
 import React from "react";
 import { Grid } from "semantic-ui-react";
 import "./App.css";
-import { connect } from "react-redux"; 
+import { connect } from "react-redux";
 import ColorPanel from "./Panels/ColorPanel";
 import SidePanel from "./Panels/SidePanel";
 import Messages from "./Messages/Messages";
@@ -16,40 +16,40 @@ const App = ({
   primaryColor,
   secondaryColor
 }) => (
-  <Grid
-    columns="equal"
-    className="app"
-    style={{ backgroundColor: secondaryColor }}
-  >
-    <ColorPanel
-      key={currentUser && currentUser.name}
-      currentUser={currentUser}
-    />
-    <SidePanel
-      primaryColor={primaryColor}
-      key={currentUser && currentUser.uid}
-      currentUser={currentUser}
-    />
-
-    <Grid.Column style={{ marginLeft: 320 }}>
-      <Messages
-        key={currentChannel && currentChannel.id}
-        currentChannel={currentChannel}
+    <Grid
+      columns="equal"
+      className="app"
+      style={{ backgroundColor: secondaryColor }}
+    >
+      <ColorPanel
+        key={currentUser && currentUser.name}
         currentUser={currentUser}
-        isPrivateChannel={isPrivateChannel}
       />
-    </Grid.Column>
+      <SidePanel
+        primaryColor={primaryColor}
+        key={currentUser && currentUser.uid}
+        currentUser={currentUser}
+      />
 
-    <Grid.Column width={4}>
-      <MetaPanel
-        currentChannel={currentChannel}
-        key={currentChannel && currentChannel.name}
-        isPrivateChannel={isPrivateChannel}
-        userPosts={userPosts}
-      />
-    </Grid.Column>
-  </Grid>
-);
+      <Grid.Column style={{ marginLeft: 320 }}>
+        <Messages
+          key={currentChannel && currentChannel.id}
+          currentChannel={currentChannel}
+          currentUser={currentUser}
+          isPrivateChannel={isPrivateChannel}
+        />
+      </Grid.Column>
+
+      <Grid.Column width={4}>
+        <MetaPanel
+          currentChannel={currentChannel}
+          key={currentChannel && currentChannel.name}
+          isPrivateChannel={isPrivateChannel}
+          userPosts={userPosts}
+        />
+      </Grid.Column>
+    </Grid>
+  );
 
 const mapStateToProps = state => ({
   currentUser: state.user.currentUser,

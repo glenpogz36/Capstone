@@ -1,0 +1,6 @@
+export const channelConstant = {
+    SET_CURRENT_CHANNEL: "SET_CURRENT_CHANNEL",
+    SET_PRIVATE_CHANNEL: "SET_PRIVATE_CHANNEL",
+    SET_USER_POSTS: "SET_USER_POSTS"
+  };
+  
