@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import firebase from "../../Config/firebase";
-import md5 from "md5";
+import md5 from "md5.js";
 import {
   Grid,
   Form,

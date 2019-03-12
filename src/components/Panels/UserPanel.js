@@ -142,7 +142,7 @@ class UserPanel extends Component {
               {/* App Header */}
               <Header inverted floated="left" as="h2">
                 <Icon name="code" />
-                <Header.Content>DevChat</Header.Content>
+                <Header.Content>Myprojs</Header.Content>
               </Header>
 
               {/* User Dropdown */}
@@ -166,67 +166,67 @@ class UserPanel extends Component {
               {isLoading ? (
                 <ImageSpinner />
               ) : (
-                <React.Fragment>
-                  <Modal.Header>Change Avatar</Modal.Header>
-                  <Modal.Content>
-                    <Input
-                      onChange={this.handleChange}
-                      fluid
-                      type="file"
-                      label="New Avatar"
-                      name="previewImage"
-                    />
-                    <Grid centered stackable columns={2}>
-                      <Grid.Row centered>
-                        <Grid.Column className="ui center aligned grid">
-                          {previewImage && (
-                            <AvatarEditor
-                              ref={node => (this.avatarEditor = node)}
-                              image={previewImage}
-                              width={250}
-                              heigh={250}
-                              border={50}
-                              scale={1.2}
-                            />
-                          )}
-                        </Grid.Column>
-                        <Grid.Column>
-                          {croppedImage && (
-                            <Image
-                              style={{ margin: "3.5em auto" }}
-                              width={250}
-                              heigh={250}
-                              src={croppedImage}
-                            />
-                          )}
-                        </Grid.Column>
-                      </Grid.Row>
-                    </Grid>
-                  </Modal.Content>
-                  <Modal.Actions>
-                    {croppedImage && (
-                      <Button
-                        color="green"
-                        inverted
-                        onClick={this.uploadCroppedImage}
-                        disabled={isLoading}
-                      >
-                        <Icon name="save" /> Change Avatar
+                  <React.Fragment>
+                    <Modal.Header>Change Avatar</Modal.Header>
+                    <Modal.Content>
+                      <Input
+                        onChange={this.handleChange}
+                        fluid
+                        type="file"
+                        label="New Avatar"
+                        name="previewImage"
+                      />
+                      <Grid centered stackable columns={2}>
+                        <Grid.Row centered>
+                          <Grid.Column className="ui center aligned grid">
+                            {previewImage && (
+                              <AvatarEditor
+                                ref={node => (this.avatarEditor = node)}
+                                image={previewImage}
+                                width={250}
+                                heigh={250}
+                                border={50}
+                                scale={1.2}
+                              />
+                            )}
+                          </Grid.Column>
+                          <Grid.Column>
+                            {croppedImage && (
+                              <Image
+                                style={{ margin: "3.5em auto" }}
+                                width={250}
+                                heigh={250}
+                                src={croppedImage}
+                              />
+                            )}
+                          </Grid.Column>
+                        </Grid.Row>
+                      </Grid>
+                    </Modal.Content>
+                    <Modal.Actions>
+                      {croppedImage && (
+                        <Button
+                          color="green"
+                          inverted
+                          onClick={this.uploadCroppedImage}
+                          disabled={isLoading}
+                        >
+                          <Icon name="save" /> Change Avatar
                       </Button>
-                    )}
-                    <Button
-                      color="blue"
-                      inverted
-                      onClick={this.handleCropImage}
-                    >
-                      <Icon name="image" /> Preview
+                      )}
+                      <Button
+                        color="blue"
+                        inverted
+                        onClick={this.handleCropImage}
+                      >
+                        <Icon name="image" /> Preview
                     </Button>
-                    <Button color="red" inverted onClick={this.closeModal}>
-                      <Icon name="remove" /> Cancel
+                      <Button color="red" inverted onClick={this.closeModal}>
+                        <Icon name="remove" /> Cancel
                     </Button>
-                  </Modal.Actions>
-                </React.Fragment>
-              )}
+                    </Modal.Actions>
+                  </React.Fragment>
+                )}
             </Modal>
           </Grid.Column>
         </Grid>
