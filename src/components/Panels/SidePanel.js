@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Menu } from "semantic-ui-react";
 import UserPanel from "./UserPanel";
 import Channels from "../Channels/Channels";
-import Starred from "../Channels/Starred";
+import Starred from "../Channels/Channels";
 import DirectMessages from "../Channels/DirectMessages";
 
 export default class SlidePanel extends Component {

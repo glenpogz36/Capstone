@@ -9,6 +9,7 @@ import {
   Button,
   Header,
   Message,
+ 
 } from "semantic-ui-react";
 
 export default class Login extends Component {
@@ -65,9 +66,9 @@ export default class Login extends Component {
     return (
       <Grid textAlign="center" verticalAlign="middle" className="app">
         <Grid.Column style={{ maxWidth: 450 }}>
-          <Header as="h1" color="blue" textAlign="center">
-
-            Login to Myproj Portal
+          <Header as="h1"  color="blue" textAlign="center">
+            
+            Login to Myprojs
           </Header>
           <Form size="large" onSubmit={this.handleSubmit}>
             <Segment stacked>

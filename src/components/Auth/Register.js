@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import firebase from "../../Config/firebase";
-import md5 from "md5.js";
+import md5 from "md5";
 import {
   Grid,
   Form,
@@ -137,8 +137,9 @@ export default class Register extends Component {
     return (
       <Grid textAlign="center" verticalAlign="middle" className="app">
         <Grid.Column style={{ maxWidth: 450 }}>
-          <Header as="h1" color="orange" textAlign="center">
-            Register for Myproj Portal
+          <Header as="h1"  color="orange" textAlign="center">
+            
+            Register for Ourproj
           </Header>
           <Form size="large" onSubmit={this.handleSubmit}>
             <Segment stacked>

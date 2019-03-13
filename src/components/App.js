@@ -1,12 +1,12 @@
 import React, { Component } from "react";
-import Login from "./Auth/Login";
-import Register from "./Auth/Register";
+import Login from "../Components/Auth/Login";
+import Register from "../Components/Auth/Register";
 import Layout from "../Components/Panels/Layout";
 import firebase from "../Config/firebase";
 import { Route, withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 import { setUser, clearUser } from "../Actions";
-import "./CSS/App.css";
+import "../Components/CSS/App.css";
 import { Spinner } from "../Components/Spinner";
 
 class App extends Component {

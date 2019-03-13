@@ -280,11 +280,12 @@ export class MessageForm extends Component {
           closeModal={this.closeModal}
           uploadFile={this.uploadFile}
         />
-        <ProgressBar
+      <ProgressBar
           uploadState={uploadState}
           percentUploaded={percentUploaded}
         />
       </Segment>
+     
     );
   }
 }
