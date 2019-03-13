@@ -68,7 +68,7 @@ export default class Login extends Component {
         <Grid.Column style={{ maxWidth: 450 }}>
           <Header as="h1"  color="blue" textAlign="center">
             
-            Login to Myprojs
+            Login to Ourprojs
           </Header>
           <Form size="large" onSubmit={this.handleSubmit}>
             <Segment stacked>
