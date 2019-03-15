@@ -1,4 +1,5 @@
 # Capstone
+DEMO: https://ourproject-port.firebaseapp.com/login
 
 #### _Multiple components that renders different Routed page using React for Epicodus, 3.1.2019_
 
@@ -14,14 +15,16 @@ Web-base project portals that allows teams to easyly commicate to eacother givin
 | :-------------    | :------------- | :-------------|
 | User clicks a Link  | Input= "Home" | Output: Home |
 | User input incorrect URL| Input: "Name" | Output: "Error Page"  |
-| User clicks a Link | Input: "User Clicked" | Output: Details of Link |
-| User clicks Comment | Input: "FeedBack" | Output: "List of Comments"|
-| User invite | Input: "id" | Output: "Server Id"|
+| User downlaods avatar | Input: "User Downlaod" | Output: Stores and Donwlaod in firebase |
+| User clicks Comment | Input: "Message" | Output: "List of Messages"|
+| User creates channels | Input: "Unique Id" | Output: "Uses Id"|
+| User creates Panel Background | Input: "Choices primary and secondary color" | Output: "Stores and Download using firebase"|
 
-### Example of Routing Structure
+### Project Blueprint
 
 
-![capture](https://user-images.githubusercontent.com/43967399/53666365-c9943a00-3c22-11e9-9a97-980f730b3300.PNG)
+![Capture](https://user-images.githubusercontent.com/43967399/54459656-865ac080-4724-11e9-9019-51eb447b0b45.PNG)
+
 
 
 ### Example Of Redux
@@ -30,7 +33,8 @@ Web-base project portals that allows teams to easyly commicate to eacother givin
 
 
 ### Future Improvements
-* 
+* Video App (WEBRTC)
+* Create Profile (Resume, Contact, Project List)
 
 ## Technologies Used
 * _NPM i create-raect-app (MyprojName_)
