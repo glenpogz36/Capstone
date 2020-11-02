@@ -37,8 +37,8 @@ Web-base project portals that allows teams to easyly commicate to eacother givin
 * Create Profile (Resume, Contact, Project List)
 
 ## Technologies Used
-* _NPM i create-raect-app (MyprojName_)
-* _NPMX i create-raect-app (MyprojName_) for new versions
+* _NPM i create-react-app (MyprojName_)
+* _NPMX i create-react-app (MyprojName_) for new versions
 * _Javascript_
 * _React_
 * _Node Package Manager (NPM)_
